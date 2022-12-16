@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+// import {setSearch} from "./Container";
+
 
 function Navbar() {
+	const [input, setInput] = useState("");
+
+	const handleChange =() =>{
+		let val = this.target.value;
+		setInput(val);
+	}
+
+	const handleClick = () =>{
+		this.preventDefault();
+		// setSearch(input);
+	}
 	return (
 		<div>
 			<nav className="navbar navbar-expand-lg bg-light">
 				<div className="container-fluid">
-					<a className="navbar-brand" href="#">
+					<a className="navbar-brand mx-3" href="/">
 						Newsify
 					</a>
 					<button
@@ -21,16 +34,11 @@ function Navbar() {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
-							<li className="nav-item">
-								<a className="nav-link active" aria-current="page" href="#">
-									Home
-								</a>
-							</li>
-							<li className="nav-item">
+							{/* <li className="nav-item">
 								<a className="nav-link" href="#">
 									Link
 								</a>
-							</li>
+							</li> */}
 						</ul>
 						<form className="d-flex" role="search">
 							<input
@@ -38,8 +46,9 @@ function Navbar() {
 								type="search"
 								placeholder="Search"
 								aria-label="Search"
+								onChange={handleChange}
 							/>
-							<button className="btn btn-outline-success" type="submit">
+							<button className="btn btn-outline-success" onClick={handleClick} type="submit">
 								Search
 							</button>
 						</form>
