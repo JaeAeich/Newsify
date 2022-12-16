@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-// import {setSearch} from "./Container";
-
+import { Link } from "react-router-dom";
 
 function Navbar() {
 	const [input, setInput] = useState("");
 
-	const handleChange =() =>{
+	const handleChange = () => {
 		let val = this.target.value;
 		setInput(val);
-	}
+	};
 
-	const handleClick = () =>{
+	const handleClick = () => {
 		this.preventDefault();
 		// setSearch(input);
-	}
+	};
 	return (
 		<div>
 			<nav className="navbar navbar-expand-lg bg-light">
@@ -34,11 +33,46 @@ function Navbar() {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
-							{/* <li className="nav-item">
-								<a className="nav-link" href="#">
-									Link
-								</a>
-							</li> */}
+							<li className="nav-item">
+								<Link className="nav-link" to="/Sports">
+									Sports
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/Business">
+									Business
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/Entertainment">
+									Entertainment
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/General">
+									General
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/Science">
+									Science
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/Sports">
+									Sports
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/Technology">
+									Technology
+								</Link>
+							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/Health">
+									Health
+								</Link>
+							</li>
 						</ul>
 						<form className="d-flex" role="search">
 							<input
@@ -48,7 +82,11 @@ function Navbar() {
 								aria-label="Search"
 								onChange={handleChange}
 							/>
-							<button className="btn btn-outline-success" onClick={handleClick} type="submit">
+							<button
+								className="btn btn-outline-success"
+								onClick={handleClick}
+								type="submit"
+							>
 								Search
 							</button>
 						</form>
