@@ -3,7 +3,21 @@ import React from "react";
 function Card(props) {
 	return (
 		<div>
-			<div className="card" style={{ width: "18rem" }}>
+			<div
+				className="card"
+				style={{
+					position: "relative",
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+				}}
+			>
+				<span
+					style={{ position: "absolute", zIndex: "1" ,top:'0',left:'0'}}
+					class="badge rounded-pill bg-danger"
+				>
+					{props.channel}
+				</span>
 				<img
 					src={
 						props.urlToImage == null
@@ -20,7 +34,11 @@ function Card(props) {
 					<p className="card-text">
 						{props.content == null ? "Content..." : props.content}
 					</p>
-					<a href={props.urlToNews==null?'/':props.urlToNews} target="_blank" className="btn btn-primary">
+					<a
+						href={props.urlToNews == null ? "/" : props.urlToNews}
+						target="_blank"
+						className="btn btn-primary"
+					>
 						read more ...
 					</a>
 				</div>

@@ -8,7 +8,7 @@ function Container(props) {
 	const [page, setPage] = useState(1);
     const [pageSize, setPageSize] = useState(9);
 	const [url, setUrl] = useState(
-		`https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=0f3c5ed1000247359045725ad78ea91e&page=${page}&pageSize=${pageSize}`
+		`https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${pageSize}`
 	);
 
 	const handleNextClick = (event) => {
@@ -16,18 +16,19 @@ function Container(props) {
 		const newPage = page + 1;
 		setPage(newPage);
 		setUrl(
-			`https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=0f3c5ed1000247359045725ad78ea91e&page=${page}&pageSize=${pageSize}`
+			`https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${pageSize}`
 		);
 		fetchData();
 		console.log(page);
 	};
+    
 	const handlePrevClick = (event) => {
 		event.preventDefault();
 		if (page >= 1) {
 			const newPage = page - 1;
 			setPage(newPage);
 			setUrl(
-				`https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=0f3c5ed1000247359045725ad78ea91e&page=${page}&pageSize=${pageSize}`
+				`https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${pageSize}`
 			);
 			fetchData();
 		}
@@ -84,6 +85,7 @@ function Container(props) {
 									urlToNews={obj.url}
 									urlToImage={obj.urlToImage}
 									content={obj.content}
+                                    channel={obj.source.name}
 								/>
 							</div>
 						);
@@ -95,7 +97,7 @@ function Container(props) {
 					disabled={page <= 1}
 					type="button"
 					onClick={handlePrevClick}
-					class="btn btn-primary my-3 mx-5"
+					className="btn btn-primary my-3 mx-5"
 				>
 					Prev
 				</button>
@@ -103,7 +105,7 @@ function Container(props) {
 					// disabled={Math.ceil(data.)}
 					type="button"
 					onClick={handleNextClick}
-					class="btn btn-primary my-3 mx-5"
+					className="btn btn-primary my-3 mx-5"
 				>
 					Next
 				</button>

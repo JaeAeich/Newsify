@@ -6,13 +6,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Notfound from './components/Notfound';
 
 function App() {
+  // const apiKey=process.env.REACT_APP_API_KEY;
+  const apiKey = "5dc52e0ee1934eb18cb9dfd51b042e20";
 	return (
 		<div className="App">
-			{/* <Container category="health" /> */}
+			{/* <Container apiKey={apiKey} category="health" /> */}
 			{/* <BrowserRouter>
 				<Navbar />
 				<Routes>
-					<Route  path="/home" component={<Container category="business" />} />
+					<Route  path="/home" component={<Container apiKey={apiKey} category="business" />} />
 				</Routes>
 			</BrowserRouter> */}
 			<BrowserRouter>
@@ -20,37 +22,37 @@ function App() {
 				<Routes>
 					<Route
 						path="/Sports"
-						element={<Container key="sports" category="sports" />}
+						element={<Container apiKey={apiKey} key="sports" category="sports" />}
 					/>
 					<Route
 						path="/Business"
-						element={<Container key="business" category="business" />}
+						element={<Container apiKey={apiKey} key="business" category="business" />}
 					/>
 					<Route
 						path="/Entertainment"
-						element={<Container key="entertainment" category="entertainment" />}
+						element={<Container apiKey={apiKey} key="entertainment" category="entertainment" />}
 					/>
 					<Route
 						path="/General"
-						element={<Container key="general" category="general" />}
+						element={<Container apiKey={apiKey} key="general" category="general" />}
 					/>
 					<Route
 						path="/Health"
-						element={<Container key="health" category="health" />}
+						element={<Container apiKey={apiKey} key="health" category="health" />}
 					/>
 					<Route
 						path="/Science"
-						element={<Container key="science" category="science" />}
+						element={<Container apiKey={apiKey} key="science" category="science" />}
 					/>
 					<Route
 						path="/Sports"
-						element={<Container key="sports" category="sports" />}
+						element={<Container apiKey={apiKey} key="sports" category="sports" />}
 					/>
 					<Route
 						path="/Technology"
-						element={<Container key="technology" category="technology" />}
+						element={<Container apiKey={apiKey} key="technology" category="technology" />}
 					/>
-					<Route path="/" element={<Container key="*" category="sports" />} />
+					<Route path="/" element={<Container apiKey={apiKey} key="*" category="sports" />} />
 					<Route path="*" element={<Notfound key="*" />} />
 				</Routes>
 			</BrowserRouter>
