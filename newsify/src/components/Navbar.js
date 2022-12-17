@@ -73,6 +73,11 @@ function Navbar() {
 									Health
 								</Link>
 							</li>
+							<li className="nav-item">
+								<Link className="nav-link" to="/Credit">
+									Credit
+								</Link>
+							</li>
 						</ul>
 						<form className="d-flex" role="search">
 							<input
