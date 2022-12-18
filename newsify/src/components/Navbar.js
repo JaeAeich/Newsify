@@ -1,21 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
 	const [input, setInput] = useState("");
+	const [color, setColor] = useState("white");
+	const blinkButton = useRef();
 
 	const handleChange = () => {
 		let val = this.target.value;
 		setInput(val);
 	};
 
-	const handleClick = () => {
-		this.preventDefault();
-		// setSearch(input);
+	useEffect(() => {
+		setInterval(() => {
+			if (color === "white") {
+				setColor("black");
+			} else {
+				setColor("white");
+			}
+			blinkButton.current.style.color = color;
+		}, 1000);
+	});
+
+	const handleClick = (e) => {
+		e.preventDefault();
 	};
 	return (
 		<div>
-			<nav className="navbar navbar-expand-lg bg-light">
+			<nav className="navbar navbar-expand-lg bg-light sticky-top">
 				<div className="container-fluid">
 					<a className="navbar-brand mx-3" href="/">
 						Newsify
@@ -73,8 +85,16 @@ function Navbar() {
 									Health
 								</Link>
 							</li>
-							<li className="nav-item">
-								<Link className="nav-link" to="/Credit">
+							<li
+								style={{ background: "steelblue", borderRadius: "20%" }}
+								className="nav-item"
+							>
+								<Link
+									ref={blinkButton}
+									className="nav-link"
+									to="/Credit"
+									style={{ color: "white" }}
+								>
 									Credit
 								</Link>
 							</li>

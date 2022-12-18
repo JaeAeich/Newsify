@@ -4,6 +4,7 @@ import Spinner from "./Spinner";
 import Card from "./Card";
 import InfiniteScroll from "react-infinite-scroll-component";
 
+
 function Container(props) {
 	const [data, setData] = useState(null);
 	const [page, setPage] = useState(1);
@@ -37,19 +38,24 @@ function Container(props) {
 	// };
 
 	const fetchData = async () => {
+		props.setProgress(0);
 		const response = await fetch(url);
 		const data = await response.json();
 		setData(data.articles);
 		setTotRes(data.totalResults);
+		props.setProgress(100);
 	};
 
 	const fetchMoreData = async () => {
+		props.setProgress(0);
 		console.log("clg called");
 		if (page * pageSize <= totRes) {
 			const newPage = page + 1;
 			setPage(newPage);
 			setUrl(
-				`https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${pageSize}`
+				`https://newsapi.org/v2/top-headlines?country=us&category=${
+					props.category
+				}&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${pageSize}`
 			);
 			const response = await fetch(url);
 			console.log("api requested");
@@ -58,6 +64,7 @@ function Container(props) {
 			console.log("new data received:", newData);
 			setData([...data, ...newData]);
 			console.log("data updated : ", data);
+			props.setProgress(100);
 		}
 	};
 
