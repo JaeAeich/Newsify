@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Newsify/static/css/main.073c9b0a.css",
+    "main.js": "/Newsify/static/js/main.7a3eccb5.js",
+    "index.html": "/Newsify/index.html",
+    "main.073c9b0a.css.map": "/Newsify/static/css/main.073c9b0a.css.map",
+    "main.7a3eccb5.js.map": "/Newsify/static/js/main.7a3eccb5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.7a3eccb5.js"
+  ]
+}
