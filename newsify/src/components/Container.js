@@ -48,22 +48,19 @@ function Container(props) {
 
 	const fetchMoreData = async () => {
 		props.setProgress(0);
-		console.log("clg called");
 		if (page * pageSize <= totRes) {
-			const newPage = page + 1;
-			setPage(newPage);
 			setUrl(
 				`https://newsapi.org/v2/top-headlines?country=us&category=${
 					props.category
 				}&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${pageSize}`
 			);
+			const newPage = page + 1;
+			setPage(newPage);
 			const response = await fetch(url);
-			console.log("api requested");
+			
 			let newData = await response.json();
 			newData = newData.articles;
-			console.log("new data received:", newData);
 			setData([...data, ...newData]);
-			console.log("data updated : ", data);
 			props.setProgress(100);
 		}
 	};
@@ -72,20 +69,16 @@ function Container(props) {
 		fetchData();
 	}, []);
 
-	useEffect(() => {
-		console.log("data changed to :", data);
-	}, [data]);
-
 	return data == null ? (
 		<Spinner />
 	) : (
 		<>
-			<div className="container">
+			<div className="container my-5">
 				<InfiniteScroll
 					dataLength={data.length}
 					next={fetchMoreData}
 					hasMore={data.length <= totRes}
-					loader={<h4>wait...</h4>}
+					loader={page*pageSize<totRes?<h4>wait...</h4>:<h4>end of results</h4>}
 				>
 					<div className="container">
 						<div className="row my-3">

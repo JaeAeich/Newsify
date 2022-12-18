@@ -19,15 +19,15 @@ function Navbar() {
 				setColor("white");
 			}
 			blinkButton.current.style.color = color;
-		}, 1000);
-	});
+		}, 3000);
+	}, []);
 
 	const handleClick = (e) => {
 		e.preventDefault();
 	};
 	return (
 		<div>
-			<nav className="navbar navbar-expand-lg bg-light sticky-top">
+			<nav className="navbar fixed-top navbar-expand-lg bg-light">
 				<div className="container-fluid">
 					<a className="navbar-brand mx-3" href="/">
 						Newsify
@@ -110,6 +110,7 @@ function Navbar() {
 							<button
 								className="btn btn-outline-success"
 								onClick={handleClick}
+								style={{ transition: "ease-in-out" }}
 								type="submit"
 							>
 								Search
