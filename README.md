@@ -35,6 +35,7 @@ This website is built using the following libraries and dependencies:
 To get started with this website, you will need to have Node.js and npm installed on your computer. Once you have those, you can clone this repository and run the following commands:
 
 ```
+cd newsify
 npm install
 npm start
 ```
